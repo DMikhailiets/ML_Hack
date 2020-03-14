@@ -19,7 +19,7 @@ class CameraComponent extends React.Component {
             
             async function makePostRequest() {
 
-                let res = await axios.get('http://192.168.43.202:8000/');
+                let res = await axios.get('http://192.168.43.202:8000/api/ml');
             
                 console.log(`Status code: ${res.status}`);
                 console.log(`Status text: ${res.statusText}`);

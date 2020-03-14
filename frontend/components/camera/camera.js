@@ -4,22 +4,40 @@ import { Camera } from 'expo-camera';
 import * as axios from 'axios';
 
 
+const axios_instance = axios.create(
+    {
+        headers: {
+          
+            'Content-Type': 'multipart/form-data; boundary=-------------573cf973d5228',
+            'Content-Length': '288'
+        }
+
+    }
+)
+
+
 class CameraComponent extends React.Component {
    
     state = {
-    }
 
+    }
 
     takePicture() {
         
         this.setState({
             takeImageText: "... PROCESSING PICTURE ..."
         });
-        this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
+
+        this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {                
             
             async function makePostRequest() {
+                let photo = data.uri;
+                let formData = new FormData();        
+                formData.append("photo", photo);
 
-                let res = await axios.get('http://192.168.43.202:8000/api/ml');
+                let res = await axios_instance.post('http://192.168.43.202:8000/api/ml/', {
+                    photo: formData
+                });
             
                 console.log(`Status code: ${res.status}`);
                 console.log(`Status text: ${res.statusText}`);
@@ -28,9 +46,11 @@ class CameraComponent extends React.Component {
                 console.log(`Date: ${res.headers.date}`);
                 console.log(`Data: ${res.data}`);
             }
-            
             makePostRequest();
+        }).then(response => {
+            return console.log(response)
         })
+        
     }
   
     render(){

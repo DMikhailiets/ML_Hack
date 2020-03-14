@@ -1,18 +1,35 @@
 import React, { useState, useEffect, Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
+import * as axios from 'axios';
+
 
 class CameraComponent extends React.Component {
    
+    state = {
+    }
+
+
     takePicture() {
+        
         this.setState({
             takeImageText: "... PROCESSING PICTURE ..."
         });
         this.camera.takePictureAsync({ skipProcessing: true }).then((data) => {
-            this.setState({
-                takeImageText: "PICTURE TAKEN",
-                photo: data.uri
-            }, console.log(data.uri))
+            
+            async function makePostRequest() {
+
+                let res = await axios.get('http://192.168.43.202:8000/');
+            
+                console.log(`Status code: ${res.status}`);
+                console.log(`Status text: ${res.statusText}`);
+                console.log(`Request method: ${res.request.method}`);
+                console.log(`Path: ${res.request.path}`);
+                console.log(`Date: ${res.headers.date}`);
+                console.log(`Data: ${res.data}`);
+            }
+            
+            makePostRequest();
         })
     }
   

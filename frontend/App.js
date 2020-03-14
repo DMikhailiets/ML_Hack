@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Camera } from 'expo-camera';
-
+import CameraComponent from './components/camera/camera';
 export default function App() {
   return (
-    <View style={styles.container}>
-      Text
-    </View>
+  <View style={{flex: 1}}>
+        <View style={{flex: 9}}>
+          <CameraComponent/>
+        </View>
+        <View style={{flex: 1, backgroundColor: 'powderblue'}} />
+      </View>
   );
 }
 
@@ -17,4 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerText: {
+    color: '#fff',
+  }
 });

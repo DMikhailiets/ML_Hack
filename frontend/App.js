@@ -3,6 +3,7 @@ import { ActivityIndicator, Button, Clipboard, Image, ImageBackground, Share, St
 import { Constants } from 'expo';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
+import * as axios from 'axios';
 //import backgroundImage from './assets/8473e1deca3ceae75a8b5c18f2002d24.svg';
 
 
@@ -157,25 +158,40 @@ export default class App extends Component {
     var data = new FormData();  
     data.append('file', {  
       uri: pictureuri,
-      name: 'file',
+      name: 'file2',
       type: 'image/jpg'
     })
-
-    fetch(apiUrl, {  
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data'
-      },
-      method: 'POST',
-      body: data
+    
+    axios.post(apiUrl, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
     }).then(
       response => {
         console.log('succ ')
-        console.log('hi!')
+        console.log(response)
       }
       ).catch(err => {
       console.log('err ')
       console.log(err)
+  
+
+
+    // fetch(apiUrl, {  
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'multipart/form-data'
+    //   },
+    //   method: 'POST',
+    //   body: data
+    // }).then(
+    //   response => {
+    //     console.log('succ ')
+    //     console.log('hi!')
+    //   }
+    //   ).catch(err => {
+    //   console.log('err ')
+    //   console.log(err)
     } )
 
 

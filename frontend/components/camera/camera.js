@@ -44,7 +44,7 @@ class CameraComponent extends React.Component {
                 console.log(`Request method: ${res.request.method}`);
                 console.log(`Path: ${res.request.path}`);
                 console.log(`Date: ${res.headers.date}`);
-                console.log(`Data: ${res.data}`);
+                console.log(`Data: ${res.data.}`);
             }
             makePostRequest();
         }).then(response => {

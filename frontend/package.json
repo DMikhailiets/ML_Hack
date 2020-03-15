@@ -11,6 +11,8 @@
     "axios": "^0.19.2",
     "expo": "~36.0.0",
     "expo-camera": "~8.0.0",
+    "expo-image-picker": "^8.0.2",
+    "expo-permissions": "^8.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
@@ -19,6 +21,11 @@
   "devDependencies": {
     "babel-preset-expo": "~8.0.0",
     "@babel/core": "^7.0.0"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "./node_modules"
+    ]
   },
   "private": true
 }

@@ -25,7 +25,9 @@ SECRET_KEY = '5y+_m^!of5-vc-^ir6k2v0a2rks1md^c1b!+y0l6-de6cd*$=9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.43.202'
+]
 
 
 # Application definition
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ml_hack'
 ]
 
 MIDDLEWARE = [
